@@ -4,7 +4,7 @@
  * February 23, 2025
  * Character.java
  * --Description: contains attributes and methods for
- * creating and updating Character objects
+ * creating and updating Character objects.
  */
 
 // Imports

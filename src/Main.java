@@ -12,8 +12,13 @@
  * - User must never be able to crash the program by entering invalid data
  * - The program only exits when the user chooses to
  */
+
+// Imports
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        // Initialize variables
+        Scanner sc = new Scanner(System.in);
     }
 }

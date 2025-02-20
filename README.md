@@ -8,7 +8,7 @@
 
 ## Project Description
 Users can create Characters to be played in their
-Dugneons & Dragon's games. Each Character has unique
+Dungeons & Dragon's games. Each Character has unique
 attributes.
 
 Features:

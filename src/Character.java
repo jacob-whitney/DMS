@@ -6,10 +6,6 @@
  * --Description: contains attributes and methods for
  * creating and updating Character objects.
  */
-
-// Imports
-
-
 public class Character {
     // Attributes
     private int id;

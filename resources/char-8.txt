@@ -1,0 +1,8 @@
+1010, Zephyr Duskrun, Ranger, Elf, 11, 19, 13
+1011, Baldric Stonehelm, Barbarian, Dwarf, 20, 12, 15
+1012, Lirien Dawnwhisper, Wizard, Elf, 8, 17, 6
+1013, Cassia Thornbrook, Warlock, Halfling, 14, 9, 10
+1014, Drogan Ashenmaw, Sorcerer, Dragonborn, 16, 15, 12
+1015, Jareth Windrider, Fighter, Human, 18, 11, 17
+1016, Elowen Lightfoot, Rogue, Halfling, 7, 16, 8
+1017, Magnus Ironbark, Warlock, Gnome, 13, 14, 10

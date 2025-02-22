@@ -7,11 +7,117 @@
  */
 
 // Imports
-import java.util.Objects;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Menu {
-    // Custom Methods
+    // User Input Methods
+    /**
+     * --method:
+     * --parameters:
+     * --return:
+     * --purpose:
+     */
+    public static ArrayList<String> readFile(String filepath) {
+        ArrayList<String> data = new ArrayList<String>();
+        try {
+            Scanner sc = new Scanner(new File(filepath));
+
+            while (sc.hasNextLine()) {
+                data.add(sc.nextLine());
+            }
+            sc.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+            e.printStackTrace();
+        }
+        return data;
+    }
+
+    /**
+     * --method:
+     * --parameters:
+     * --return:
+     * --purpose:
+     */
+    public static String inputAttribute(String attribute, Scanner scanner) {
+        boolean loop = true;
+        while (loop) {
+            switch (attribute) {
+                case "id":
+                    System.out.print("ID: ");
+                    loop = false;
+                    break;
+                case "name":
+                    System.out.print("Name: ");
+                    loop = false;
+                    break;
+                case "classification":
+                    System.out.print("Class: ");
+                    loop = false;
+                    break;
+                case "race":
+                    System.out.print("Race: ");
+                    loop = false;
+                    break;
+                case "str":
+                    System.out.print("Strength: ");
+                    loop = false;
+                    break;
+                case "dex":
+                    System.out.print("Dexterity: ");
+                    loop = false;
+                    break;
+                case "con":
+                    System.out.print("Constitution: ");
+                    loop = false;
+                    break;
+                default:
+                    System.out.println("Not a valid attribute, try again");
+            }
+        }
+        return scanner.nextLine();
+    }
+    // Validation Methods
+    public static boolean validateId(String input) {
+        // Check that it's integer
+        try {
+            int id = Integer.parseInt(input);
+            if (id > 0) {
+                return true;
+            } else {
+                System.out.println("> Please enter a positive integer");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("> Please enter an integer");
+            return false;
+        }
+    }
+
+    public static boolean checkDuplicateIds(String id, CharacterList list) {
+        //for (int i = 0; i < list.size(); i++) {} // --fix this so you can get size of list
+        return true;
+    }
+
+    public static int getValidId(String id, CharacterList list, Scanner scanner) {
+        while (true) {
+            if (validateId(id)) {
+                if (checkDuplicateIds(id, list)) {
+                    break;
+                } else {
+                    id = inputAttribute("id", scanner);
+                }
+            } else {
+                id = inputAttribute("id", scanner);
+            }
+        }
+        return Integer.parseInt(id);
+    }
+
+
     /**
      * --method:
      * --parameters:
@@ -23,7 +129,7 @@ public class Menu {
         System.out.print("ID: ");
         while (true) {
             // Validate input is an integer
-            if (scanner.hasNextInt()) { // --need to validate for user entering ctrl+d/ctrl+z, it means end the input, but shouldn't quit the program
+            if (scanner.hasNextInt()) {
                 id = scanner.nextInt();
 
                 // Validate input meets id constraints

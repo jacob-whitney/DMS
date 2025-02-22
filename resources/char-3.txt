@@ -1,0 +1,3 @@
+1002, Eldrin Moonshadow, Rogue, Elf, 12, 19, 10
+1003, Soren Blackflame, Warlock, Dragonborn, 15, 13, 9
+1004, Mira Willowbrook, Ranger, Halfling, 14, 17, 12

@@ -17,7 +17,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         // Initialize variables
-        int count = 0;
         CharacterList list = new CharacterList();
         Scanner sc = new Scanner(System.in);
         boolean loop = true;
@@ -26,39 +25,33 @@ public class Main {
         while (loop) {
             String input = sc.nextLine();
             switch (input) {
+                case "i":
+                    // Import characters
+
+                    break;
                 case "c":
-                    // Create patron
-
-                    // print instructions
-                    // user input
-                    // if validateId is true
-                    // id = input
-
-                    // Each input function validates before returning value
-
+                    // Create character
                     int id = Menu.getValidId(sc);
                     String name = Menu.getValidName(sc);
-                    /*String classification = Menu.getValidClassification(sc);
-                    String race = getValidRace(sc);
-                    int str = getValidStr(sc);
-                    int dex = getValidDex(sc);
-                    int con = getValidCon(sc);
-                    */
+                    String classification = Menu.getValidClassification(sc);
+                    String race = Menu.getValidRace(sc);
+                    int str = Menu.getValidAbilityScore("str", sc);
+                    int dex = Menu.getValidAbilityScore("dex", sc);
+                    int con = Menu.getValidAbilityScore("con", sc);
 
-                    System.out.println("Creating character:");
+                    System.out.println("Creating character:"); // --will need to be print headers and print values below on one line
                     System.out.println("- ID: " + id);
                     System.out.println("- Name: " + name);
-                    /*System.out.println("- Class: " + classification);
+                    System.out.println("- Class: " + classification);
                     System.out.println("- Race: " + race);
                     System.out.println("- Strength: " + str);
                     System.out.println("- Dexterity: " + dex);
                     System.out.println("- Constitution: " + con);
-                     */
 
-                    /*
-                    list[count] = new Character(id, name, classification, race, str, dex, con);
-                    count++;
-                    */
+                    list.addCharacter(new Character(id, name, classification, race, str, dex, con));
+                    break;
+                case "p":
+                    System.out.println(list.getCharacterList());
                     break;
                 case "q":
                     System.out.println("Quitting program...");

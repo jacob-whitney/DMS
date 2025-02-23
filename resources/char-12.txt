@@ -14,5 +14,3 @@
 1027, Sable Duskriver, Wizard, Halfling, 9, 18, 6
 1028, Kaelith Emberforge, Sorcerer, Gnome, 13, 16, 10
 1029, Valen Darkmoor, Warlock, Elf, 15, 12, 11
-
-

@@ -1,0 +1,4 @@
+1030, Balen Lemonless, Warlock, Elf, 15, 12, 11
+1030, Cassius Redclaw, Barbarian, Dragonborn, 20, 9, 17
+1031, Selene Frostwhisper, Ranger, Human, 11, 17, 10
+1032, Selene Frostwhisper, Fighter, Dwarf, 19, 14, 16

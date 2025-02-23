@@ -25,12 +25,23 @@ public class Main {
 
         // Interactive menu
         while (loop) {
+            System.out.print(Menu.printMainMenu());
             String input = sc.nextLine();
+
             switch (input) {
                 case "i":
                     // Import characters
+                    System.out.println();
+                    System.out.println("Importing characters by file");
+                    System.out.print("---------------------------------");
+                    System.out.println("-------------------------------");
+
                     ArrayList<String> importChars = Menu.readFile(Menu.inputFilePath());
                     String charLine = "";
+
+                    System.out.println();
+                    System.out.println("Characters created:");
+                    System.out.println(Menu.printCharHeadings());
 
                     for (int i = 0; i < importChars.size(); i++) {
                         charLine = importChars.get(i);
@@ -38,21 +49,27 @@ public class Main {
                             list.addCharacter(Menu.parseAttributesFromString(charLine, list));
                         }
                     }
-
-                    // Read the file
-                    // Store the data
-                    // Per line
-                    // - Parse data into attributes
-                    // - Validate each attribute
-                    // - Create character
-
-                    /*ArrayList<String> importList = Menu.readFile("resources/char-3.txt");
-                    for (int i = 0; i < importList.size(); i++) {
-                        System.out.println(importList.get(i));
-                    }*/
+                    System.out.println();
                     break;
+
+                case "p":
+                    // Print characters
+                    System.out.println();
+                    System.out.println("Characters");
+                    System.out.print("---------------------------------");
+                    System.out.println("-------------------------------");
+
+                    System.out.println(Menu.printCharHeadings());
+                    System.out.println(list.getCharacterList());
+                    break;
+
                 case "c":
                     // Create character
+                    System.out.println();
+                    System.out.println("Create a Character");
+                    System.out.print("---------------------------------");
+                    System.out.println("-------------------------------");
+
                     int id = Menu.getValidId(Menu.inputAttribute("id"), list);
                     String name = Menu.getValidName(Menu.inputAttribute("name"), list);
                     String classification = Menu.getValidClassification(Menu.inputAttribute("classification"));
@@ -62,29 +79,43 @@ public class Main {
                     int con = Menu.getValidAbilityScore("con", Menu.inputAttribute("con"));
 
                     System.out.println();
-                    System.out.println("Creating character..."); // --will need to be print headers and print values below on one line
-                    System.out.println("  - ID: " + id);
-                    System.out.println("  - Name: " + name);
-                    System.out.println("  - Class: " + classification);
-                    System.out.println("  - Race: " + race);
-                    System.out.println("  - Strength: " + str);
-                    System.out.println("  - Dexterity: " + dex);
-                    System.out.println("  - Constitution: " + con);
+                    System.out.println("Character created:");
+                    System.out.println(Menu.printCharHeadings());
+                    System.out.print(id + " | " + name + " | " + classification + " | ");
+                    System.out.println(race + " |  " + str + "  |  " + dex + "  |  " + con);
+                    System.out.println();
 
                     list.addCharacter(new Character(id, name, classification, race, str, dex, con));
                     break;
 
-                case "p":
+                case "d":
+                    // Delete character
+                    System.out.println();
+                    System.out.println("Delete a Character");
+                    System.out.print("---------------------------------");
+                    System.out.println("-------------------------------");
+
+                    System.out.println(Menu.printCharHeadings());
                     System.out.println(list.getCharacterList());
+                    System.out.println();
+                    System.out.println("Enter the ID of the character you wish to delete");
+
+                    list.deleteCharacter(Menu.inputAttribute("id"));
+
+                    System.out.println();
+                    System.out.println(Menu.printCharHeadings());
+                    System.out.println(list.getCharacterList());
+
                     break;
 
                 case "q":
-                    System.out.println("Quitting program...");
+                    System.out.println();
+                    System.out.println("Program terminated.");
                     loop = false;
                     break;
 
                 default:
-                    System.out.println("Invalid input, please try again");
+                    System.out.println("> Invalid input, please try again");
             }
 
         }

@@ -24,7 +24,7 @@ public class Menu {
      */
     public static String inputFilePath() {
         System.out.println("Enter the file path (ex. resources/chars.txt) you want to import");
-        System.out.println("Filepath: ");
+        System.out.print("Filepath: ");
         return sc.nextLine();
     }
 
@@ -109,8 +109,7 @@ public class Menu {
             }
             scanner.close();
         } catch (FileNotFoundException e) {
-            System.out.println("File not found");
-            e.printStackTrace();
+            System.out.println("> File not found");
         }
         return data;
     }
@@ -123,85 +122,16 @@ public class Menu {
      */
     public static Character parseAttributesFromString(String line, CharacterList list) {
         String[] attributes = line.split(", ");
-        int id = 0;
-        String name = "";
-        String classification = "";
-        String race = "";
-        int str = 0;
-        int dex = 0;
-        int con = 0;
+        int id = getValidId(attributes[0], list);
+        String name = getValidName(attributes[1], list);
+        String classification = getValidClassification(attributes[2]);
+        String race = getValidRace(attributes[3]);
+        int str = Integer.parseInt(attributes[4]);
+        int dex = Integer.parseInt(attributes[5]);
+        int con = Integer.parseInt(attributes[6]);
 
-        switch (attributes.length) {
-            case 7:
-                id = getValidId(attributes[0], list);
-                name = getValidName(attributes[1], list);
-                classification = getValidClassification(attributes[2]);
-                race = getValidRace(attributes[3]);
-                str = Integer.parseInt(attributes[4]);
-                dex = Integer.parseInt(attributes[5]);
-                con = Integer.parseInt(attributes[6]);
-                break;
-            case 6:
-                System.out.println("> Not all attributes were complete, please re-enter the following.");
-                id = getValidId(attributes[0], list);
-                name = getValidName(attributes[1], list);
-                classification = getValidClassification(attributes[2]);
-                race = getValidRace(attributes[3]);
-                str = Integer.parseInt(attributes[4]);
-                dex = Integer.parseInt(attributes[5]);
-                con = getValidAbilityScore("con", inputAttribute("con"));
-                break;
-            case 5:
-                System.out.println("> Not all attributes were complete, please re-enter the following.");
-                id = getValidId(attributes[0], list);
-                name = getValidName(attributes[1], list);
-                classification = getValidClassification(attributes[2]);
-                race = getValidRace(attributes[3]);
-                str = Integer.parseInt(attributes[4]);
-                dex = getValidAbilityScore("dex", inputAttribute("dex"));
-                con = getValidAbilityScore("con", inputAttribute("con"));
-                break;
-            case 4:
-                System.out.println("> Not all attributes were complete, please re-enter the following.");
-                id = getValidId(attributes[0], list);
-                name = getValidName(attributes[1], list);
-                classification = getValidClassification(attributes[2]);
-                race = getValidRace(attributes[3]);
-                str = getValidAbilityScore("str", inputAttribute("str"));
-                dex = getValidAbilityScore("dex", inputAttribute("dex"));
-                con = getValidAbilityScore("con", inputAttribute("con"));
-                break;
-            case 3:
-                System.out.println("> Not all attributes were complete, please re-enter the following.");
-                id = getValidId(attributes[0], list);
-                name = getValidName(attributes[1], list);
-                classification = getValidClassification(attributes[2]);
-                race = getValidRace(inputAttribute("race"));
-                str = getValidAbilityScore("str", inputAttribute("str"));
-                dex = getValidAbilityScore("dex", inputAttribute("dex"));
-                con = getValidAbilityScore("con", inputAttribute("con"));
-                break;
-            case 2:
-                System.out.println("> Not all attributes were complete, please re-enter the following.");
-                id = getValidId(attributes[0], list);
-                name = getValidName(attributes[1], list);
-                classification = getValidClassification(inputAttribute("classification"));
-                race = getValidRace(inputAttribute("race"));
-                str = getValidAbilityScore("str", inputAttribute("str"));
-                dex = getValidAbilityScore("dex", inputAttribute("dex"));
-                con = getValidAbilityScore("con", inputAttribute("con"));
-                break;
-            case 1:
-                System.out.println("> Not all attributes were complete, please re-enter the following.");
-                id = getValidId(attributes[0], list);
-                name = getValidName(inputAttribute("name"), list);
-                classification = getValidClassification(inputAttribute("classification"));
-                race = getValidRace(inputAttribute("race"));
-                str = getValidAbilityScore("str", inputAttribute("str"));
-                dex = getValidAbilityScore("dex", inputAttribute("dex"));
-                con = getValidAbilityScore("con", inputAttribute("con"));
-                break;
-        }
+        System.out.print(id + " | " + name + " | " + classification + " | ");
+        System.out.println(race + " |  " + str + "  |  " + dex + "  |  " + con);
 
         return new Character(id, name, classification, race, str, dex, con);
     }
@@ -215,11 +145,9 @@ public class Menu {
      */
     public static boolean validateImportedString(String line) {
         String[] data = line.split(", ");
-        if (data.length > 7) {
-            System.out.println("> There are too many comma delimiters, this line will be skipped");
-            return false;
-        } else if (data.length < 1) {
-            System.out.println("> No attributes detected, this line will be skipped");
+        if (data.length != 7) {
+            System.out.println("> All 7 attributes must be present, this line will be skipped: ");
+            System.out.println("'" + line + "'");
             return false;
         } else {
             return true;
@@ -304,7 +232,7 @@ public class Menu {
             for (int i = 0; i < listSize; i++) {
                 listId = list.getCharacter(i).getId();
                 if (listId == intId) {
-                    System.out.println("> This ID already exists, please enter a new one");
+                    System.out.println("> The ID, " + id + ", already exists, please enter a new one");
                     return false;
                 }
             }
@@ -325,7 +253,7 @@ public class Menu {
             for (int i = 0; i < listSize; i++) {
                 listName = list.getCharacter(i).getName();
                 if (listName.equals(name)) {
-                    System.out.println("> This name already exists, please enter a new one");
+                    System.out.println("> The name, " + name + ", already exists, please enter a new one");
                     return false;
                 }
             }
@@ -334,14 +262,6 @@ public class Menu {
     }
 
     // Custom Get Methods
-    /**
-     * --method:
-     * --parameters:
-     * --return:
-     * --purpose:
-     */
-
-
     /**
      * --method:
      * --parameters:
@@ -488,5 +408,40 @@ public class Menu {
             }
         }
         return Integer.parseInt(score);
+    }
+
+    // Print Methods
+    /**
+     * --method:
+     * --parameters:
+     * --return:
+     * --purpose:
+     */
+    public static String printMainMenu() {
+
+        return """
+        Menu
+        ----------------------------------------------------------------
+        i - Import a file of Characters
+        p - Print a list of created Characters
+        c - Create a Character manually
+        d - Delete a Character
+        u - Update a Character
+        r - Roll random ability scores for a Character
+        q - Quit
+       \s
+        Enter the letter of the option you want to use:\s""";
+    }
+
+    /**
+     * --method:
+     * --parameters:
+     * --return:
+     * --purpose:
+     */
+    public static String printCharHeadings() {
+        return """
+        ID    | Name           | Class    | Race   | Str | Dex | Con
+        -----------------------------------------------------------------""";
     }
 }

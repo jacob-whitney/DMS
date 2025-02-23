@@ -51,9 +51,10 @@ public class CharacterList {
             String charList = "";
             for (int i = 0; i < characters.size(); i++) {
                 Character c = characters.get(i);
-                charList = charList + c.getId()             + "  |  ";
-                charList = charList + c.getName()           + "  |  ";
-                charList = charList + c.getClassification() + "  |  ";
+                charList = charList + c.getId()             + " | ";
+                charList = charList + c.getName()           + " | ";
+                charList = charList + c.getClassification() + " | ";
+                charList = charList + c.getRace() + " |  ";
                 charList = charList + c.getStr()            + "  |  ";
                 charList = charList + c.getDex()            + "  |  ";
                 charList = charList + c.getCon()            + "\n";
@@ -63,6 +64,7 @@ public class CharacterList {
             return "List is empty";
         }
     }
+
     /**
      * --method:
      * --parameters:
@@ -72,7 +74,6 @@ public class CharacterList {
     public int getListSize() {
         return characters.size();
     }
-
 
     /**
      * --method:
@@ -85,5 +86,24 @@ public class CharacterList {
         return characters;
     }
 
+    public List<Character> deleteCharacter(String id) {
+        while (true) {
+            if (Menu.validateId(id)) {
+                int deleteId = Integer.parseInt(id);
+                boolean removed = characters.removeIf(character -> character.getId() == deleteId);
+                if (removed) {
+                    System.out.println("Character deleted and list updated");
+                    break;
+                } else {
+                    System.out.println("> ID not found, try again");
+                    id = Menu.inputAttribute("id");
+                }
+            } else {
+                id = Menu.inputAttribute("id");
+            }
+        }
+
+        return characters;
+    }
 
 }

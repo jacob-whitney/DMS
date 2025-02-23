@@ -5,28 +5,21 @@
 1005, Orin Deepdelver, Fighter, Dwarf, 19
 1006, Sylas Starfire, Wizard, Elf, 10, 16
 1007, Kaida Stormscale, Sorcerer, Dragonborn, 13, 18, 11,
-1d35cv, Finn Copperkettle, Rogue, Gnome, 9, 14, 7
--1009, Rowan Swiftblade, Fighter, Human, 17, 12, 14
-10.1, Zephyr Duskrun, Ranger, Elf, 11, 19, 13
-myID, Baldric Stonehelm, Barbarian, Dwarf, 20, 12, 15
-18\n, Lirien Dawnwhisper, Wizard, Elf, 8, 17, 6
-+1013, Cassia Thornbrook, Warlock, Halfling, 14, 9, 10
-2150000000, Drogan Ashenmaw, Sorcerer, Dragonborn, 16, 15, 12
-1015, Jareth Windrider, Fighter, Human, 18, 11, 17
-1016, Elowen Lightfoot, Rogue, Halfling, 7, 16, 8
-1017, Magnus Ironbark, Warlock, Gnome, 13, 14, 10
-1018, Tavian Stormborn, Ranger, Human, 15, 18, 14
-1019, Brakka Flamebeard, Sorcerer, Dwarf, 17, 12, 15
-1020, Nyx Shadowvale, Wizard, Gnome, 10, 19, 7
-1021, Gideon Blackthorn, Barbarian, Human, 19, 10, 16
-1022, Lyric Quickfoot, Rogue, Halfling, 8, 17, 9
-1023, Elandor Silverleaf, Fighter, Elf, 12, 13, 11
-1024, Thalia Ravenshade, Warlock, Human, 14, 15, 12
-1025, Draven Nightbane, Ranger, Dragonborn, 16, 14, 13
-1026, Alric Stonefist, Fighter, Dwarf, 18, 10, 19
-1027, Sable Duskriver, Wizard, Halfling, 9, 18, 6
-1028, Kaelith Emberforge, Sorcerer, Gnome, 13, 16, 10
-1029, Valen Darkmoor, Warlock, Elf, 15, 12, 11
-1030, Cassius Redclaw, Barbarian, Dragonborn, 20, 9, 17
-1031, Selene Frostwhisper, Ranger, Human, 11, 17, 10
-1032, Roderic Bronzeguard, Fighter, Dwarf, 19, 14, 16
+1d35cv, Elizabeth Montgomery Kensington Harrington Fitzpatrick III, Rogue, Gnome, 9, 14, 7
+-1009, j, Fighter, Human, 17, 12, 14
+10.1, Zephyr Duskrun, 8, 8, 11, 19, 13
+myID, Baldric Stonehelm, 1, 1, 20, 12, 15
+18\n, Lirien Dawnwhisper, 7, 3, 8, 17, 6
++1013, Cassia Thornbrook, Warlock, Halfling, 1, -10, 2150000000
+2150000000, Drogan Ashenmaw, Sorcerer, Dragonborn, hi\n, less, 3.0
+1015, Jareth Windrider, Fighter, Human, 5f6uj4, +11, 17
+Elowen Lightfoot, Rogue, Halfling, 7, 16, 8
+Warlock, Gnome, 13, 14, 10
+Human, 15, 18, 14
+17, 12, 15
+19, 7
+16
+Lyric Quickfoot, 1022, 9, Halfling, 8, Rogue, 17
+10,23, Elandor, Silverleaf, Figh, ter, Elf, 12, 13, 11
+1024, Thalia Ravenshade, Human, Warlock, 14, 15, 12
+1025, Draven Nightbane, Ranger, Dragonborn, 16, 14, 13, 12, hello, yes and

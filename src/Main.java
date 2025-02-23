@@ -45,24 +45,24 @@ public class Main {
 
 
                     int id = Menu.getValidId(Menu.inputAttribute("id", sc), list, sc);
-                    /*String name = Menu.getValidName(sc);
+                    String name = Menu.getValidName(sc);
                     String classification = Menu.getValidClassification(sc);
                     String race = Menu.getValidRace(sc);
                     int str = Menu.getValidAbilityScore("str", sc);
                     int dex = Menu.getValidAbilityScore("dex", sc);
                     int con = Menu.getValidAbilityScore("con", sc);
-                    */
+
 
                     System.out.println("Creating character:"); // --will need to be print headers and print values below on one line
                     System.out.println("- ID: " + id);
-                    /*System.out.println("- Name: " + name);
+                    System.out.println("- Name: " + name);
                     System.out.println("- Class: " + classification);
                     System.out.println("- Race: " + race);
                     System.out.println("- Strength: " + str);
                     System.out.println("- Dexterity: " + dex);
                     System.out.println("- Constitution: " + con);
 
-                    list.addCharacter(new Character(id, name, classification, race, str, dex, con));*/
+                    list.addCharacter(new Character(id, name, classification, race, str, dex, con));
                     break;
                 case "p":
                     System.out.println(list.getCharacterList());

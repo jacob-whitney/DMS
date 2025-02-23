@@ -81,11 +81,11 @@ public class Menu {
         return scanner.nextLine();
     }
     // Validation Methods
-    public static boolean validateId(String input) {
+    public static boolean validateId(String id) {
         // Check that it's integer
         try {
-            int id = Integer.parseInt(input);
-            if (id > 0) {
+            int intId = Integer.parseInt(id);
+            if (intId > 0) {
                 return true;
             } else {
                 System.out.println("> Please enter a positive integer");
@@ -98,7 +98,22 @@ public class Menu {
     }
 
     public static boolean checkDuplicateIds(String id, CharacterList list) {
-        //for (int i = 0; i < list.size(); i++) {} // --fix this so you can get size of list
+        int intId = Integer.parseInt(id);
+        int listId = 0;
+        int listSize = list.getListSize();
+        System.out.println("> List Size: " + listSize);
+        if (listSize > 0) {
+            for (int i = 0; i < listSize + 1; i++) {
+                listId = list.getCharacter(i).getId();
+                System.out.println("> Checking new ID: " + intId + " with " + listId);
+                if (listId == intId) {
+                    System.out.println("> This ID already exists, please enter a new one");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
         return true;
     }
 

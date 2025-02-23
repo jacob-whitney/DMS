@@ -63,6 +63,16 @@ public class CharacterList {
             return "List is empty";
         }
     }
+    /**
+     * --method:
+     * --parameters:
+     * --return:
+     * --purpose:
+     */
+    public int getListSize() {
+        return characters.size();
+    }
+
 
     /**
      * --method:

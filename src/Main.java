@@ -95,20 +95,98 @@ public class Main {
                     System.out.print("---------------------------------");
                     System.out.println("-------------------------------");
 
-                    System.out.println(Menu.printCharHeadings());
-                    System.out.println(list.getCharacterList());
-                    System.out.println();
-                    System.out.println("Enter the ID of the character you wish to delete");
+                    if (list.getListSize() == 0) {
+                        System.out.println("> This list is empty");
+                    } else {
+                        System.out.println(Menu.printCharHeadings());
+                        System.out.println(list.getCharacterList());
+                        System.out.println();
+                        System.out.println("Enter the ID of the character you wish to delete");
+                        list.deleteCharacter(Menu.inputAttribute("id"));
 
-                    list.deleteCharacter(Menu.inputAttribute("id"));
-
-                    System.out.println();
-                    System.out.println(Menu.printCharHeadings());
-                    System.out.println(list.getCharacterList());
+                        System.out.println();
+                        System.out.println(Menu.printCharHeadings());
+                        System.out.println(list.getCharacterList());
+                    }
 
                     break;
 
+                case "u":
+                    // Update character
+                    System.out.println();
+                    System.out.println("Update a Character");
+                    System.out.print("---------------------------------");
+                    System.out.println("-------------------------------");
+
+                    if (list.getListSize() == 0) {
+                        System.out.println("> This list is empty");
+                    } else {
+                        System.out.println(Menu.printCharHeadings());
+                        System.out.println(list.getCharacterList());
+                        System.out.println("Enter the ID of the character you wish to update");
+                        String updateId = Menu.inputAttribute("id");
+                        while (true) {
+                            if (Menu.validateId(updateId)) {
+                                if (Menu.checkIdExists(updateId, list)) {
+                                    break;
+                                } else {
+                                    updateId = Menu.inputAttribute("id");
+                                }
+                            } else {
+                                updateId = Menu.inputAttribute("id");
+                            }
+                        }
+
+                        System.out.println("Enter which attribute you wish to update");
+                        System.out.println(Menu.printAttributes());
+                        System.out.print("Attribute: ");
+                        String updateAttribute = sc.nextLine();
+
+                        System.out.print("Enter the new value for " + updateAttribute + ": ");
+                        String updateValue = sc.nextLine();
+
+                        list.updateCharacter(updateId, updateAttribute, updateValue, list);
+                    }
+                    break;
+
+                case "r":
+                    // Roll random ability scores
+                    System.out.println();
+                    System.out.println("Custom Action: Roll Ability Scores");
+                    System.out.print("---------------------------------");
+                    System.out.println("-------------------------------");
+
+                    if (list.getListSize() == 0) {
+                        System.out.println("> This list is empty");
+                    } else {
+                        System.out.println(Menu.printCharHeadings());
+                        System.out.println(list.getCharacterList());
+                        System.out.println("Enter the ID of the character whose scores you wish to roll");
+                        String rollId = Menu.inputAttribute("id");
+                        while (true) {
+                            if (Menu.validateId(rollId)) {
+                                if (Menu.checkIdExists(rollId, list)) {
+                                    break;
+                                } else {
+                                    rollId = Menu.inputAttribute("id");
+                                }
+                            } else {
+                                rollId = Menu.inputAttribute("id");
+                            }
+                        }
+
+                        String rollStr = String.valueOf(Menu.getRandomAbilityScore());
+                        String rollDex = String.valueOf(Menu.getRandomAbilityScore());
+                        String rollCon = String.valueOf(Menu.getRandomAbilityScore());
+
+                        list.updateCharacter(rollId, "str", rollStr, list);
+                        list.updateCharacter(rollId, "dex", rollDex, list);
+                        list.updateCharacter(rollId, "con", rollCon, list);
+                    }
+                    break;
+
                 case "q":
+                    // Quit program
                     System.out.println();
                     System.out.println("Program terminated.");
                     loop = false;

@@ -3,7 +3,7 @@
  * Software Development I
  * February 23, 2025
  * Character.java
- * --Description: contains attributes and methods for
+ * Description: contains attributes and methods for
  * creating and updating Character objects.
  */
 public class Character {
@@ -90,13 +90,4 @@ public class Character {
     public void setCon(int con) {
         this.con = con;
     }
-
-    // Custom Methods
-    /**
-     * --method:
-     * --parameters:
-     * --return:
-     * --purpose:
-     */
-
 }

@@ -46,57 +46,69 @@ class CharacterListTest {
     @DisplayName("Create Character Test")
     void testCreateCharacter() {
         // Setup
-        list.addCharacter(new Character(
-                1234,
-                "Thalric Ironfist",
-                "Fighter",
-                "Dwarf",
-                18,
-                16,
-                12
-        ));
+        int id = 1234;
+        String name = "Thalric Ironfist";
+        String classification = "Fighter";
+        String race = "Dwarf";
+        int str = 18;
+        int dex = 16;
+        int con = 12;
+        list.addCharacter(new Character(id, name, classification, race, str, dex, con));
+
+        String listContent = """
+                5678 | Sylwen Nightshade | Ranger | Elf |  10  |  10  |  10
+                1234 | Thalric Ironfist | Fighter | Dwarf |  18  |  16  |  12\n""";
+        int listSize = 2;
 
         // Assertions
-        assertNotNull(list.getCharacter(1), "Error: null character");
+        assertNotNull(
+                list.getCharacter(1),
+                "Error: null character"
+        );
         assertEquals(
-                1234,
+                id,
                 list.getCharacter(1).getId(),
                 "Error: The character ID is incorrect"
         );
         assertEquals(
-                "Thalric Ironfist",
+                name,
                 list.getCharacter(1).getName(),
                 "Error: The character Name is incorrect"
         );
         assertEquals(
-                "Fighter",
+                classification,
                 list.getCharacter(1).getClassification(),
                 "Error: The character Class is incorrect"
         );
         assertEquals(
-                "Dwarf",
+                race,
                 list.getCharacter(1).getRace(),
                 "Error: The character Race is incorrect"
         );
         assertEquals(
-                18,
+                str,
                 list.getCharacter(1).getStr(),
                 "Error: The character Strength is incorrect"
         );
         assertEquals(
-                16,
+                dex,
                 list.getCharacter(1).getDex(),
                 "Error: The character Dexterity is incorrect"
         );
         assertEquals(
-                12,
+                con,
                 list.getCharacter(1).getCon(),
                 "Error: The character Constitution is incorrect"
         );
         assertEquals(
-                2,
+                listSize,
                 list.getListSize(),
                 "Error: The list size is incorrect"
+        );
+        assertEquals(
+                listContent,
+                list.getCharacterList(),
+                "Error: The character list is incorrect"
         );
     }
 
@@ -109,6 +121,27 @@ class CharacterListTest {
     @org.junit.jupiter.api.Test
     @DisplayName("Delete Character Test")
     void testDeleteCharacter() {
+        // Setup
+        list.deleteCharacter(String.valueOf("5678"));
+        int index = 0;
+        int count = 0;
+        String listContent = "List is empty";
+
+        // Assertions
+        assertNull(
+                list.getCharacter(index),
+                "Error: character is not null"
+        );
+        assertEquals(
+                count,
+                list.getListSize(),
+                "Error: list size is incorrect"
+        );
+        assertEquals(
+                listContent,
+                list.getCharacterList(),
+                "Error: character list is incorrect"
+        );
     }
 
     /**
@@ -118,7 +151,162 @@ class CharacterListTest {
      * purpose:
      */
     @org.junit.jupiter.api.Test
-    void updateCharacter() {
+    @DisplayName("Update Character Test")
+    void testUpdateCharacter() {
+        // Setup
+        int id = 9101;
+        String name = "Seraphina Moonglow";
+        String classification = "Warlock";
+        String race = "Halfling";
+        int str = 12;
+        int dex = 13;
+        int con = 14;
+
+        list.updateCharacter("5678", "id", String.valueOf(id), list);
+        list.updateCharacter("9101", "name", name, list);
+        list.updateCharacter("9101", "class", classification, list);
+        list.updateCharacter("9101", "race", race, list);
+        list.updateCharacter("9101", "strength", String.valueOf(str), list);
+        list.updateCharacter("9101", "dexterity", String.valueOf(dex), list);
+        list.updateCharacter("9101", "constitution", String.valueOf(con), list);
+
+        String listContent = id + " | " + name + " | " + classification + " | ";
+        listContent = listContent + race + " |  " + str + "  |  " + dex + "  |  ";
+        listContent = listContent + con + "\n";
+        int index = 0;
+        int count = 1;
+
+        // Assertions
+        assertNotNull(
+                list.getCharacter(index),
+                "Error: null character"
+        );
+        assertEquals(
+                id,
+                list.getCharacter(index).getId(),
+                "Error: The character ID is incorrect"
+        );
+        assertEquals(
+                name,
+                list.getCharacter(index).getName(),
+                "Error: The character Name is incorrect"
+        );
+        assertEquals(
+                classification,
+                list.getCharacter(index).getClassification(),
+                "Error: The character Class is incorrect"
+        );
+        assertEquals(
+                race,
+                list.getCharacter(index).getRace(),
+                "Error: The character Race is incorrect"
+        );
+        assertEquals(
+                str,
+                list.getCharacter(index).getStr(),
+                "Error: The character Strength is incorrect"
+        );
+        assertEquals(
+                dex,
+                list.getCharacter(index).getDex(),
+                "Error: The character Dexterity is incorrect"
+        );
+        assertEquals(
+                con,
+                list.getCharacter(index).getCon(),
+                "Error: The character Constitution is incorrect"
+        );
+        assertEquals(
+                count,
+                list.getListSize(),
+                "Error: The list size is incorrect"
+        );
+        assertEquals(
+                listContent,
+                list.getCharacterList(),
+                "Error: The character list is incorrect"
+        );
+    }
+
+    /**
+     * method: test
+     * parameters: none
+     * return: void
+     * purpose:
+     */
+    @org.junit.jupiter.api.Test
+    @DisplayName("Custom Action Test")
+    void testRollAbilityScores() {
+        // Setup
+        int index = 0;
+        int count = 1;
+        int id = 5678;
+        String name = "Sylwen Nightshade";
+        String classification = "Ranger";
+        String race = "Elf";
+        int str = Menu.getRandomAbilityScore();
+        int dex = Menu.getRandomAbilityScore();
+        int con = Menu.getRandomAbilityScore();
+
+        list.updateCharacter(String.valueOf(id), "str", String.valueOf(str), list);
+        list.updateCharacter(String.valueOf(id), "dex", String.valueOf(dex), list);
+        list.updateCharacter(String.valueOf(id), "con", String.valueOf(con), list);
+
+        String listContent = id + " | " + name + " | " + classification + " | ";
+        listContent = listContent + race + " |  " + str + "  |  " + dex + "  |  ";
+        listContent = listContent + con + "\n";
+
+
+        // Assertions
+        assertNotNull(
+                list.getCharacter(index),
+                "Error: null character"
+        );
+        assertEquals(
+                id,
+                list.getCharacter(index).getId(),
+                "Error: The character ID is incorrect"
+        );
+        assertEquals(
+                name,
+                list.getCharacter(index).getName(),
+                "Error: The character Name is incorrect"
+        );
+        assertEquals(
+                classification,
+                list.getCharacter(index).getClassification(),
+                "Error: The character Class is incorrect"
+        );
+        assertEquals(
+                race,
+                list.getCharacter(index).getRace(),
+                "Error: The character Race is incorrect"
+        );
+        assertEquals(
+                str,
+                list.getCharacter(index).getStr(),
+                "Error: The character Strength is incorrect"
+        );
+        assertEquals(
+                dex,
+                list.getCharacter(index).getDex(),
+                "Error: The character Dexterity is incorrect"
+        );
+        assertEquals(
+                con,
+                list.getCharacter(index).getCon(),
+                "Error: The character Constitution is incorrect"
+        );
+        assertEquals(
+                count,
+                list.getListSize(),
+                "Error: The list size is incorrect"
+        );
+        assertEquals(
+                listContent,
+                list.getCharacterList(),
+                "Error: The character list is incorrect"
+        );
     }
 
     /**
@@ -131,8 +319,10 @@ class CharacterListTest {
     @DisplayName("Import Characters Test")
     void testImportCharacter() {
         // Setup
-        ArrayList<String> importChars = Menu.readFile("./resources/characters.txt");
-        String fileContent = """
+        int count = 26;
+        String filepath = "./resources/characters.txt";
+        ArrayList<String> importChars = Menu.readFile(filepath);
+        String listContent = """
                 5678 | Sylwen Nightshade | Ranger | Elf |  10  |  10  |  10
                 1001 | Thrain Ironfist | Barbarian | Dwarf |  18  |  14  |  16
                 1002 | Eldrin Moonshadow | Rogue | Elf |  12  |  19  |  10
@@ -170,12 +360,12 @@ class CharacterListTest {
 
         // Assertions
         assertEquals(
-                26,
+                count,
                 list.getListSize(),
                 "Error: The list size is incorrect"
         );
         assertEquals(
-                fileContent,
+                listContent,
                 list.getCharacterList(),
                 "Error: The character list is incorrect"
         );

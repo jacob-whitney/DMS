@@ -18,10 +18,10 @@ class CharacterListTest {
     CharacterList list = new CharacterList();
 
     /**
-     * method: test
+     * method: setUp
      * parameters: none
      * return: void
-     * purpose:
+     * purpose: setup required objects before each test
      */
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
@@ -37,10 +37,11 @@ class CharacterListTest {
     }
 
     /**
-     * method: test
+     * method: testCreateCharacter
      * parameters: none
      * return: void
-     * purpose:
+     * purpose: test that character object
+     *          is created successfully
      */
     @org.junit.jupiter.api.Test
     @DisplayName("Create Character Test")
@@ -113,10 +114,11 @@ class CharacterListTest {
     }
 
     /**
-     * method: test
+     * method: testDeleteCharacter
      * parameters: none
      * return: void
-     * purpose:
+     * purpose: test that deleting character
+     *          removes that object successfully
      */
     @org.junit.jupiter.api.Test
     @DisplayName("Delete Character Test")
@@ -145,10 +147,11 @@ class CharacterListTest {
     }
 
     /**
-     * method: test
+     * method: testUpdateCharacter
      * parameters: none
      * return: void
-     * purpose:
+     * purpose: test that updating attributes
+     *          of a character object works successfully
      */
     @org.junit.jupiter.api.Test
     @DisplayName("Update Character Test")
@@ -229,10 +232,12 @@ class CharacterListTest {
     }
 
     /**
-     * method: test
+     * method: testRollAbilityScores
      * parameters: none
      * return: void
-     * purpose:
+     * purpose: test that custom action of
+     *          rolling randomg ability scores
+     *          works successfully
      */
     @org.junit.jupiter.api.Test
     @DisplayName("Custom Action Test")
@@ -310,10 +315,12 @@ class CharacterListTest {
     }
 
     /**
-     * method: test
+     * method: testImportCharacter
      * parameters: none
      * return: void
-     * purpose:
+     * purpose: test that reading a file
+     *          and importing characters
+     *          from it works successfully
      */
     @org.junit.jupiter.api.Test
     @DisplayName("Import Characters Test")
